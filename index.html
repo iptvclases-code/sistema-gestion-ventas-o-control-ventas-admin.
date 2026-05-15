@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ventas - Panel Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        header { background: #333; color: white; padding: 10px; text-align: center; border-radius: 8px; }
+        nav { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        button { padding: 10px; cursor: pointer; border: none; border-radius: 5px; background: #007bff; color: white; }
+        .container { background: white; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .admin-only { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Panel de Control de Ventas</h1>
+    <p>Bienvenido: <span id="user-role">Dueño (Admin)</span></p>
+</header>
+
+<nav>
+    <button onclick="showSection('ventas')">Ventas</button>
+    <button onclick="showSection('clientes')">Clientes</button>
+    <button onclick="showSection('trabajadores')">Trabajadores</button>
+    <button onclick="showSection('deudores')">Deudores</button>
+</nav>
+
+<div id="ventas" class="container">
+    <h2>Registro de Ventas</h2>
+    <p>Aquí puedes guardar las ventas diarias y ver el porcentaje de ganancia.</p>
+    <table>
+        <tr><th>Vendedor</th><th>Monto</th><th>Ganancia (%)</th></tr>
+        <tr><td>Vendedor 1</td><td>$100.00</td><td>10%</td></tr>
+    </table>
+</div>
+
+<div id="trabajadores" class="container" style="display:none;">
+    <h2 class="admin-only">Gestión de Trabajadores (Solo Admin)</h2>
+    <ul>
+        <li>Admin - Acceso Total</li>
+        <li>Vendedor 1 - Acceso Limitado</li>
+    </ul>
+</div>
+
+<div id="deudores" class="container" style="display:none;">
+    <h2>Lista de Deudores</h2>
+    <table>
+        <tr><th>Cliente</th><th>Deuda</th><th>Estado</th></tr>
+        <tr><td>Juan Pérez</td><td>$50.00</td><td>Pendiente</td></tr>
+    </table>
+</div>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll('.container').forEach(div => div.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
